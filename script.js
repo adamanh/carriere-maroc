@@ -29,32 +29,57 @@ const i18n = {
 
     ofppt_sum: "OFPPT – Formation professionnelle",
     ofppt_body: {
-      c: "Selon la filière et le niveau (collège/lycée/bac). Sélection ou concours selon l’établissement.",
-      d: "1 à 2 ans (Technicien / Technicien Spécialisé) + stages.",
-      f: "Développement Digital, Réseaux, Infographie, Gestion, Comptabilité, Électricité…",
-      o: "Insertion rapide, possibilité de poursuivre selon les passerelles."
-    },
+  c: "Selon la filière et le niveau (collège/lycée/bac). Sélection ou concours selon l’établissement.",
+  d: "1 à 2 ans (Technicien / Technicien Spécialisé) + stages.",
+  f: "Développement Digital, Réseaux, Infographie, Gestion, Comptabilité, Électricité…",
+  o: "Insertion rapide, possibilité de poursuivre selon les passerelles.",
+  s: "Dév web (junior) : ~6 000–10 000 MAD/mois ; confirmé : ~10 000–20 000+ MAD/mois.",
+  l: [
+    { t: "Site OFPPT", u: "https://www.ofppt.ma/" },
+    { t: "MyWay (établissements)", u: "https://www.myway.ac.ma/etablissements" }
+  ]
+},
+
     ensa_sum: "ENSA – École Nationale des Sciences Appliquées",
-    ensa_body: {
-      c: "Bac scientifique/technique + concours/sélection (varie selon l’ENSA).",
-      d: "5 ans.",
-      f: "Génie Informatique, Industriel, Civil, Télécom/Réseaux…",
-      o: "Ingénieur en entreprise, bonnes opportunités au Maroc et à l’international."
-    },
+   ensa_body: {
+  c: "Bac scientifique/technique + concours/sélection (varie selon l’ENSA). Candidature souvent via la plateforme nationale.",
+  d: "5 ans.",
+  f: "Génie Informatique, Industriel, Civil, Télécom/Réseaux…",
+  o: "Ingénieur en entreprise, bonnes opportunités au Maroc et à l’international.",
+  s: "Ingénieur junior : souvent ~8 000–15 000+ MAD/mois (selon secteur/ville).",
+  l: [
+    { t: "Plateforme CursusSup (candidatures)", u: "https://www.cursussup.gov.ma/" },
+    { t: "Ministère de l’Enseignement Supérieur", u: "https://www.enssup.gov.ma/" }
+  ]
+},
+
     encg_sum: "ENCG – École Nationale de Commerce et de Gestion",
-    encg_body: {
-      c: "Bac + concours (souvent TAFEM) ou voies spécifiques selon les règles en vigueur.",
-      d: "5 ans.",
-      f: "Finance, Marketing, Comptabilité, Audit, Management…",
-      o: "Cadre en entreprise, banque, cabinet d’audit, consulting."
-    },
+   encg_body: {
+  c: "Bac + concours (TAFEM). Il existe aussi des passerelles (Bac+2/Bac+4) حسب المدرسة.",
+  d: "5 ans.",
+  f: "Finance, Marketing, Comptabilité, Audit, Management…",
+  o: "Cadre en entreprise, banque, cabinet d’audit, consulting.",
+  s: "Comptabilité (junior) : ~4 000–8 000 MAD/mois ; Marketing : ~7 000–30 000 MAD/mois حسب الخبرة.",
+  l: [
+    { t: "Plateforme CursusSup", u: "https://www.cursussup.gov.ma/" },
+    { t: "Portail BTS Libre (وزارة)", u: "https://btslibre.men.gov.ma/" }
+  ]
+},
+
     bts_est_sum: "BTS / EST (École Supérieure de Technologie)",
     bts_est_body: {
-      c: "Bac (souvent selon la filière), sélection/dossier (varie selon l’établissement).",
-      d: "2 ans.",
-      f: "Informatique, Génie électrique, Génie mécanique, Gestion…",
-      o: "Technicien supérieur, poursuite d’études possible (selon passerelles)."
-    },
+  c: "Bac + sélection/dossier. Pour BTS Libre: candidature via portail الوزارة. Pour EST: concours/selection حسب الجامعة.",
+  d: "2 ans (BTS) / 2 ans (DUT à l’EST) حسب المؤسسة.",
+  f: "Informatique, Génie électrique, Génie mécanique, Gestion…",
+  o: "Technicien supérieur, insertion pro et possibilité poursuite d’études selon passerelles.",
+  s: "Technicien/TS: غالباً ~4 000–8 000+ MAD/mois حسب المجال والخبرة.",
+  l: [
+    { t: "BTS Libre (MEN)", u: "https://btslibre.men.gov.ma/" },
+    { t: "Ministère MEN", u: "https://www.men.gov.ma/" },
+    { t: "Exemple EST (Salé)", u: "https://www.est.um5.ac.ma/" }
+  ]
+},
+
 
     opt: {
       tech: "Technologie / Informatique",
@@ -220,31 +245,50 @@ function setLang(lang){
   const encg = document.getElementById("t_encg_body");
   const bts = document.getElementById("t_bts_est_body");
 
-  if (ofppt) ofppt.innerHTML = `
-    <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].ofppt_body.c}</p>
-    <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].ofppt_body.d}</p>
-    <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].ofppt_body.f}</p>
-    <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].ofppt_body.o}</p>
-  `;
-  if (ensa) ensa.innerHTML = `
-    <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].ensa_body.c}</p>
-    <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].ensa_body.d}</p>
-    <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].ensa_body.f}</p>
-    <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].ensa_body.o}</p>
-  `;
-  if (encg) encg.innerHTML = `
-    <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].encg_body.c}</p>
-    <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].encg_body.d}</p>
-    <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].encg_body.f}</p>
-    <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].encg_body.o}</p>
-  `;
-  if (bts) bts.innerHTML = `
-    <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].bts_est_body.c}</p>
-    <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].bts_est_body.d}</p>
-    <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].bts_est_body.f}</p>
-    <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].bts_est_body.o}</p>
-  `;
+ function linksHTML(list){
+  return (list || []).map(x => `<li><a href="${x.u}" target="_blank" rel="noopener noreferrer">${x.t}</a></li>`).join("");
 }
+
+if (ofppt) ofppt.innerHTML = `
+  <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].ofppt_body.c}</p>
+  <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].ofppt_body.d}</p>
+  <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].ofppt_body.f}</p>
+  <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].ofppt_body.o}</p>
+  <p><strong>${lang==="ar"?"💰 راتب تقريبي":"💰 Salaire estimatif"} :</strong> ${i18n[lang].ofppt_body.s}</p>
+  <p><strong>${lang==="ar"?"🔗 روابط رسمية":"🔗 Liens officiels"} :</strong></p>
+  <ul class="links">${linksHTML(i18n[lang].ofppt_body.l)}</ul>
+`;
+
+if (ensa) ensa.innerHTML = `
+  <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].ensa_body.c}</p>
+  <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].ensa_body.d}</p>
+  <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].ensa_body.f}</p>
+  <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].ensa_body.o}</p>
+  <p><strong>${lang==="ar"?"💰 راتب تقريبي":"💰 Salaire estimatif"} :</strong> ${i18n[lang].ensa_body.s}</p>
+  <p><strong>${lang==="ar"?"🔗 روابط رسمية":"🔗 Liens officiels"} :</strong></p>
+  <ul class="links">${linksHTML(i18n[lang].ensa_body.l)}</ul>
+`;
+
+if (encg) encg.innerHTML = `
+  <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].encg_body.c}</p>
+  <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].encg_body.d}</p>
+  <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].encg_body.f}</p>
+  <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].encg_body.o}</p>
+  <p><strong>${lang==="ar"?"💰 راتب تقريبي":"💰 Salaire estimatif"} :</strong> ${i18n[lang].encg_body.s}</p>
+  <p><strong>${lang==="ar"?"🔗 روابط رسمية":"🔗 Liens officiels"} :</strong></p>
+  <ul class="links">${linksHTML(i18n[lang].encg_body.l)}</ul>
+`;
+
+if (bts) bts.innerHTML = `
+  <p><strong>${lang==="ar"?"✅ الشروط":"Conditions"} :</strong> ${i18n[lang].bts_est_body.c}</p>
+  <p><strong>${lang==="ar"?"⏳ المدة":"Durée"} :</strong> ${i18n[lang].bts_est_body.d}</p>
+  <p><strong>${lang==="ar"?"🎯 الشعب":"Filières"} :</strong> ${i18n[lang].bts_est_body.f}</p>
+  <p><strong>${lang==="ar"?"🚀 الآفاق":"Débouchés"} :</strong> ${i18n[lang].bts_est_body.o}</p>
+  <p><strong>${lang==="ar"?"💰 راتب تقريبي":"💰 Salaire estimatif"} :</strong> ${i18n[lang].bts_est_body.s}</p>
+  <p><strong>${lang==="ar"?"🔗 روابط رسمية":"🔗 Liens officiels"} :</strong></p>
+  <ul class="links">${linksHTML(i18n[lang].bts_est_body.l)}</ul>
+`;
+
 
 // Init langue
 const saved = localStorage.getItem("lang") || "fr";
