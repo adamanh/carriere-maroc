@@ -2,76 +2,136 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrière Maroc - Aide aux étudiants</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrière Maroc</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <h1>Carrière Maroc</h1>
-      <p>Un petit test pour aider les étudiants marocains à choisir une filière et un métier.</p>
-    </div>
-  </header>
 
-  <main class="container">
-    <section class="card">
-      <h2>Test rapide</h2>
-      <p>Réponds en 30 secondes et on te propose des idées de carrière.</p>
-
-      <form id="careerForm" class="form">
-        <label>Quel domaine t’intéresse le plus ?</label>
-        <select id="interest">
-          <option value="tech">Technologie / Informatique</option>
-          <option value="business">Business / Gestion</option>
-          <option value="health">Santé</option>
-          <option value="design">Design / Création</option>
-          <option value="education">Éducation</option>
-        </select>
-
-        <label>Ta matière la plus forte ?</label>
-        <select id="strength">
-          <option value="math">Maths / Physique</option>
-          <option value="lang">Langues / Communication</option>
-          <option value="bio">SVT / Biologie</option>
-          <option value="eco">Économie</option>
-          <option value="art">Art / Créativité</option>
-        </select>
-
-        <label>Tu préfères quel style d’études ?</label>
-        <select id="path">
-          <option value="short">Courte (OFPPT / BTS / DUT)</option>
-          <option value="long">Longue (Fac / Écoles / Master)</option>
-          <option value="both">Peu importe</option>
-        </select>
-
-        <button type="submit">Voir mes suggestions</button>
-      </form>
-    </section>
-
-    <section class="card">
-      <h2>Résultats</h2>
-      <div id="results" class="results">
-        <p>Remplis le test et clique sur “Voir mes suggestions”.</p>
+<header class="header">
+  <div class="container">
+    <div class="topbar">
+      <div>
+        <h1 id="t_title">Carrière Maroc</h1>
+        <p id="t_subtitle">Un test simple pour aider les étudiants marocains à choisir une filière et une carrière.</p>
       </div>
-    </section>
 
-    <section class="card">
-      <h2>Suggestions / Contact</h2>
-      <p>Tu peux proposer une idée de métier ou demander un conseil.</p>
-      <form class="form" onsubmit="event.preventDefault(); alert('Message envoyé ✅ (exemple)');">
-        <input placeholder="Ton nom" required />
-        <input placeholder="Ton email" type="email" required />
-        <textarea placeholder="Ton message..." rows="4" required></textarea>
-        <button type="submit">Envoyer</button>
-      </form>
-    </section>
+      <div class="lang-switch" aria-label="Changer la langue">
+        <button type="button" id="btnFR" class="lang-btn active">FR</button>
+        <button type="button" id="btnAR" class="lang-btn">AR</button>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <footer class="footer">
-      <p>© 2026 Carrière Maroc — Projet étudiant</p>
-    </footer>
-  </main>
+<main class="container">
 
-  <script src="script.js"></script>
+  <section class="card">
+    <h2 id="t_test_title">Test d’orientation (30 secondes)</h2>
+    <p id="t_test_desc">Réponds à ces questions pour obtenir 3 suggestions adaptées.</p>
+
+    <form id="careerForm" class="form">
+      <label id="t_q1" for="interest">Quel domaine t’intéresse le plus ?</label>
+      <select id="interest" required>
+        <option value="tech">Technologie / Informatique</option>
+        <option value="business">Business / Gestion</option>
+        <option value="health">Santé</option>
+        <option value="design">Design / Création</option>
+        <option value="education">Éducation</option>
+      </select>
+
+      <label id="t_q2" for="strength">Ta matière la plus forte ?</label>
+      <select id="strength" required>
+        <option value="math">Maths / Physique</option>
+        <option value="lang">Langues / Communication</option>
+        <option value="bio">SVT / Biologie</option>
+        <option value="eco">Économie</option>
+        <option value="art">Art / Créativité</option>
+      </select>
+
+      <label id="t_q3" for="path">Tu préfères quel style d’études ?</label>
+      <select id="path" required>
+        <option value="short">Courte (OFPPT / BTS / DUT)</option>
+        <option value="long">Longue (Fac / Écoles / Master)</option>
+        <option value="both">Peu importe</option>
+      </select>
+
+      <button id="t_submit" type="submit">Voir mes suggestions</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2 id="t_results_title">Résultats</h2>
+    <div id="results" class="results">
+      <p id="t_results_hint">Remplis le test et clique sur “Voir mes suggestions”.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="t_paths_title">Parcours d’études au Maroc</h2>
+    <p id="t_paths_desc">Clique sur un parcours pour voir les conditions, la durée et les débouchés.</p>
+
+    <div class="accordion">
+      <details>
+        <summary id="t_ofppt_sum">OFPPT – Formation professionnelle</summary>
+        <div class="acc-body" id="t_ofppt_body">
+          <p><strong>Conditions :</strong> Selon la filière et le niveau (collège/lycée/bac). Sélection ou concours selon l’établissement.</p>
+          <p><strong>Durée :</strong> 1 à 2 ans (Technicien / Technicien Spécialisé) + stages.</p>
+          <p><strong>Filières :</strong> Développement Digital, Réseaux, Infographie, Gestion, Comptabilité, Électricité…</p>
+          <p><strong>Débouchés :</strong> Insertion rapide, possibilité de poursuivre selon les passerelles.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary id="t_ensa_sum">ENSA – École Nationale des Sciences Appliquées</summary>
+        <div class="acc-body" id="t_ensa_body">
+          <p><strong>Conditions :</strong> Bac scientifique/technique + concours/sélection (varie selon l’ENSA).</p>
+          <p><strong>Durée :</strong> 5 ans.</p>
+          <p><strong>Filières :</strong> Génie Informatique, Industriel, Civil, Télécom/Réseaux…</p>
+          <p><strong>Débouchés :</strong> Ingénieur en entreprise, bonnes opportunités au Maroc et à l’international.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary id="t_encg_sum">ENCG – École Nationale de Commerce et de Gestion</summary>
+        <div class="acc-body" id="t_encg_body">
+          <p><strong>Conditions :</strong> Bac + concours (souvent TAFEM) ou voies spécifiques selon les règles en vigueur.</p>
+          <p><strong>Durée :</strong> 5 ans.</p>
+          <p><strong>Filières :</strong> Finance, Marketing, Comptabilité, Audit, Management…</p>
+          <p><strong>Débouchés :</strong> Cadre en entreprise, banque, cabinet d’audit, consulting.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary id="t_bts_est_sum">BTS / EST (École Supérieure de Technologie)</summary>
+        <div class="acc-body" id="t_bts_est_body">
+          <p><strong>Conditions :</strong> Bac (souvent selon la filière), sélection/dossier (varie selon l’établissement).</p>
+          <p><strong>Durée :</strong> 2 ans.</p>
+          <p><strong>Filières :</strong> Informatique, Génie électrique, Génie mécanique, Gestion…</p>
+          <p><strong>Débouchés :</strong> Technicien supérieur, poursuite d’études possible (selon passerelles).</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 id="t_contact_title">Suggestions / Contact</h2>
+    <p id="t_contact_desc">Propose une idée de métier ou demande un conseil.</p>
+
+    <form class="form" onsubmit="event.preventDefault(); alert((localStorage.getItem('lang')||'fr')==='ar' ? 'تم الإرسال ✅' : 'Message envoyé ✅');">
+      <input id="c_name" placeholder="Ton nom" required />
+      <input id="c_email" placeholder="Ton email" type="email" required />
+      <textarea id="c_msg" placeholder="Ton message..." rows="4" required></textarea>
+      <button id="t_send" type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <p id="t_footer">© 2026 Carrière Maroc — Projet étudiant</p>
+  </footer>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
