@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrière Maroc - Aide aux étudiants</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Carrière Maroc</h1>
+      <p>Un petit test pour aider les étudiants marocains à choisir une filière et un métier.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Test rapide</h2>
+      <p>Réponds en 30 secondes et on te propose des idées de carrière.</p>
+
+      <form id="careerForm" class="form">
+        <label>Quel domaine t’intéresse le plus ?</label>
+        <select id="interest">
+          <option value="tech">Technologie / Informatique</option>
+          <option value="business">Business / Gestion</option>
+          <option value="health">Santé</option>
+          <option value="design">Design / Création</option>
+          <option value="education">Éducation</option>
+        </select>
+
+        <label>Ta matière la plus forte ?</label>
+        <select id="strength">
+          <option value="math">Maths / Physique</option>
+          <option value="lang">Langues / Communication</option>
+          <option value="bio">SVT / Biologie</option>
+          <option value="eco">Économie</option>
+          <option value="art">Art / Créativité</option>
+        </select>
+
+        <label>Tu préfères quel style d’études ?</label>
+        <select id="path">
+          <option value="short">Courte (OFPPT / BTS / DUT)</option>
+          <option value="long">Longue (Fac / Écoles / Master)</option>
+          <option value="both">Peu importe</option>
+        </select>
+
+        <button type="submit">Voir mes suggestions</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Résultats</h2>
+      <div id="results" class="results">
+        <p>Remplis le test et clique sur “Voir mes suggestions”.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Suggestions / Contact</h2>
+      <p>Tu peux proposer une idée de métier ou demander un conseil.</p>
+      <form class="form" onsubmit="event.preventDefault(); alert('Message envoyé ✅ (exemple)');">
+        <input placeholder="Ton nom" required />
+        <input placeholder="Ton email" type="email" required />
+        <textarea placeholder="Ton message..." rows="4" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 Carrière Maroc — Projet étudiant</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
