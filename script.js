@@ -375,7 +375,9 @@ function setLang(lang){
   localStorage.setItem("lang", lang);
 
   document.documentElement.lang = lang;
-  document.body.dir = i18n[lang].dir;
+ document.documentElement.dir = i18n[lang].dir;
+document.body.dir = i18n[lang].dir;
+
 
   setText("t_title", i18n[lang].title);
   setText("t_subtitle", i18n[lang].subtitle);
