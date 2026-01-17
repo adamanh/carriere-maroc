@@ -208,3 +208,15 @@ button:active{ transform: translateY(1px); }
   transform: translateY(-2px);
   border-color: rgba(96,165,250,.45);
 }
+.links{
+  margin: 8px 0 0;
+  padding-inline-start: 18px;
+}
+.links a{
+  color: rgba(96,165,250,.95);
+  text-decoration: none;
+  font-weight: 700;
+}
+.links a:hover{
+  text-decoration: underline;
+}
