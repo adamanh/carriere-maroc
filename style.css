@@ -223,3 +223,79 @@ button:active{ transform: translateY(1px); }
 .links{ margin: 8px 0 0; padding-inline-start: 18px; }
 .links a{ color: rgba(96,165,250,.95); text-decoration: none; font-weight: 800; }
 .links a:hover{ text-decoration: underline; }
+/* ===== Upgrade: Typography & spacing (Option 4) ===== */
+body{
+  line-height: 1.6;
+}
+.card h2{
+  letter-spacing: .2px;
+}
+.card p{
+  font-size: 15px;
+}
+
+/* Inputs look cleaner */
+select, input, textarea{
+  border-radius: 14px;
+}
+
+/* ===== Upgrade: Accordion (Option 2) ===== */
+.accordion details{
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.accordion summary{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 6px;
+  user-select: none;
+}
+
+/* Hide default marker */
+.accordion summary::-webkit-details-marker{ display:none; }
+
+/* Custom chevron */
+.accordion summary::after{
+  content: "▾";
+  font-size: 18px;
+  opacity: .85;
+  transform: rotate(0deg);
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.accordion details[open] summary::after{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Smooth open animation */
+.accordion .acc-body{
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+  padding: 0 6px;
+}
+
+.accordion details[open] .acc-body{
+  max-height: 800px; /* كبير باش يحتوي النص */
+  opacity: 1;
+  transform: translateY(0);
+  padding: 10px 6px 6px;
+}
+
+/* Make paragraphs inside accordion nicer */
+.accordion .acc-body p{
+  margin: 8px 0;
+  color: rgba(229,231,235,.86);
+}
+
+/* Links inside accordion/results */
+.links a{
+  transition: opacity .15s ease, text-decoration-color .15s ease;
+}
+.links a:hover{
+  opacity: .95;
+}
