@@ -297,37 +297,205 @@ setLang(saved);
 btnFR.addEventListener("click", () => setLang("fr"));
 btnAR.addEventListener("click", () => setLang("ar"));
 
-/* ===== Suggestions test ===== */
 const suggestions = [
-  { key:"dev", interest:"tech", strengths:["math","lang"], path:["short","long","both"],
-    fr:{ title:"Développeur Web / Apps", study:"OFPPT (Développement Digital), BTS/DUT, Faculté (Info), Écoles", market:"Très demandé" },
-    ar:{ title:"مطور ويب / تطبيقات", study:"OFPPT، BTS/DUT، كلية الإعلاميات، مدارس", market:"مطلوب جدًا" }
+  {
+    key:"dev",
+    interest:"tech",
+    strengths:["math","lang"],
+    path:["short","long","both"],
+    fr:{
+      title:"Développeur Web / Apps",
+      study:"OFPPT (Développement Digital), BTS/DUT, Faculté (Info), écoles d’ingénieurs",
+      market:"Très demandé",
+      access:"Bac (souvent scientifique/tech) + formation (OFPPT/BTS/Fac) + portfolio/projets.",
+      salary:"Junior ~6 000–10 000 MAD/mois ; confirmé ~10 000–20 000 MAD/mois ; senior 20 000+ MAD/mois.",
+      links:[
+        {t:"OFPPT (officiel)", u:"https://www.ofppt.ma/"},
+        {t:"MyWay (OFPPT – établissements)", u:"https://www.myway.ac.ma/etablissements"}
+      ]
+    },
+    ar:{
+      title:"مطور ويب / تطبيقات",
+      study:"OFPPT (التطوير الرقمي)، BTS/DUT، كلية الإعلاميات، مدارس الهندسة",
+      market:"مطلوب جدًا",
+      access:"باك (غالبًا علمي/تقني) + تكوين (OFPPT/BTS/كلية) + مشاريع/Portfolio.",
+      salary:"مبتدئ ~6000–10000 درهم/شهر؛ متوسط ~10000–20000؛ خبير 20000+.",
+      links:[
+        {t:"OFPPT (رسمي)", u:"https://www.ofppt.ma/"},
+        {t:"MyWay (مؤسسات OFPPT)", u:"https://www.myway.ac.ma/etablissements"}
+      ]
+    }
   },
-  { key:"data", interest:"tech", strengths:["math"], path:["long","both"],
-    fr:{ title:"Data Analyst / Data Scientist", study:"Fac (Math/Info), Master, écoles", market:"Demande en hausse" },
-    ar:{ title:"محلل بيانات / عالم بيانات", study:"كلية (رياضيات/إعلاميات)، ماستر، مدارس", market:"الطلب في ارتفاع" }
+
+  {
+    key:"data",
+    interest:"tech",
+    strengths:["math"],
+    path:["long","both"],
+    fr:{
+      title:"Data Analyst",
+      study:"Fac (Math/Info), licences/masters, bootcamps",
+      market:"Demande en hausse",
+      access:"Bac scientifique + compétences Excel/SQL + stats; غالبًا مسار طويل (Licence/Master).",
+      salary:"Souvent ~8 000–12 000 MAD/mois (selon ville/exp.).",
+      links:[
+        {t:"CursusSup (orientation/candidatures)", u:"https://www.cursussup.gov.ma/"}
+      ]
+    },
+    ar:{
+      title:"محلل بيانات",
+      study:"كلية (رياضيات/إعلاميات) + تكوينات SQL/Excel",
+      market:"الطلب في ارتفاع",
+      access:"باك علمي + SQL/Excel + إحصاء؛ غالبًا مسار جامعي/ماستر.",
+      salary:"غالبًا ~8000–12000 درهم/شهر.",
+      links:[
+        {t:"CursusSup (منصة رسمية)", u:"https://www.cursussup.gov.ma/"}
+      ]
+    }
   },
-  { key:"marketing", interest:"business", strengths:["lang"], path:["short","long","both"],
-    fr:{ title:"Marketing digital", study:"OFPPT, BTS, Licence", market:"Bon pour communication" },
-    ar:{ title:"التسويق الرقمي", study:"OFPPT، BTS، إجازة", market:"مناسب للتواصل" }
+
+  {
+    key:"compta",
+    interest:"business",
+    strengths:["eco","math"],
+    path:["short","long","both"],
+    fr:{
+      title:"Comptabilité / Finance",
+      study:"OFPPT, BTS/EST, Licence Éco-Gestion, ENCG",
+      market:"Toujours demandé",
+      access:"Bac + BTS/EST أو Licence؛ ENCG غالبًا عبر concours (TAFEM حسب النظام).",
+      salary:"Comptable souvent ~4 000–8 000 MAD/mois (base).",
+      links:[
+        {t:"ENCG via CursusSup", u:"https://www.cursussup.gov.ma/"},
+        {t:"BTS Libre (MEN)", u:"https://btslibre.men.gov.ma/"},
+        {t:"MEN (officiel)", u:"https://www.men.gov.ma/"}
+      ]
+    },
+    ar:{
+      title:"المحاسبة / المالية",
+      study:"OFPPT، BTS/EST، إجازة اقتصاد/تسيير، ENCG",
+      market:"مطلوب دائمًا",
+      access:"باك + BTS/EST أو إجازة؛ ENCG غالبًا عبر مباراة/TAFEM حسب النظام.",
+      salary:"محاسب غالبًا ~4000–8000 درهم/شهر.",
+      links:[
+        {t:"CursusSup (رسمي)", u:"https://www.cursussup.gov.ma/"},
+        {t:"BTS Libre (وزارة)", u:"https://btslibre.men.gov.ma/"},
+        {t:"MEN (رسمي)", u:"https://www.men.gov.ma/"}
+      ]
+    }
   },
-  { key:"compta", interest:"business", strengths:["eco","math"], path:["short","long","both"],
-    fr:{ title:"Comptabilité / Finance", study:"OFPPT, BTS, Licence Éco-Gestion, ENCG", market:"Toujours demandé" },
-    ar:{ title:"المحاسبة / المالية", study:"OFPPT، BTS، إجازة اقتصاد/تسيير، ENCG", market:"مطلوب دائمًا" }
+
+  {
+    key:"marketing",
+    interest:"business",
+    strengths:["lang"],
+    path:["short","long","both"],
+    fr:{
+      title:"Marketing digital",
+      study:"OFPPT, BTS/EST, licences, écoles de commerce",
+      market:"Bon pour communication",
+      access:"Bac + formation (OFPPT/BTS/Licence) + compétences (contenu, pub, analytics).",
+      salary:"Marketing/Com ~8 000–12 000 MAD (junior) puis plus avec expérience.",
+      links:[
+        {t:"OFPPT (officiel)", u:"https://www.ofppt.ma/"},
+        {t:"CursusSup", u:"https://www.cursussup.gov.ma/"}
+      ]
+    },
+    ar:{
+      title:"التسويق الرقمي",
+      study:"OFPPT، BTS/EST، إجازة، مدارس التجارة",
+      market:"مناسب للتواصل",
+      access:"باك + تكوين + مهارات (محتوى/إعلانات/تحليل).",
+      salary:"تقريبًا ~8000–12000 درهم (مبتدئ) وقد يزيد مع الخبرة.",
+      links:[
+        {t:"OFPPT (رسمي)", u:"https://www.ofppt.ma/"},
+        {t:"CursusSup", u:"https://www.cursussup.gov.ma/"}
+      ]
+    }
   },
-  { key:"nurse", interest:"health", strengths:["bio"], path:["short","both"],
-    fr:{ title:"Infirmier / Infirmière", study:"Instituts / écoles de santé", market:"Forte demande" },
-    ar:{ title:"ممرض / ممرضة", study:"معاهد / مدارس الصحة", market:"طلب مرتفع" }
+
+  {
+    key:"nurse",
+    interest:"health",
+    strengths:["bio"],
+    path:["short","both"],
+    fr:{
+      title:"Infirmier / Infirmière",
+      study:"Instituts / écoles de santé",
+      market:"Forte demande",
+      access:"Bac (souvent scientifique) + concours/selection selon l’institut.",
+      salary:"Public ~4 500 MAD (moyen) ; privé débutant ~3 500–4 000 MAD/mois (indicatif).",
+      links:[
+        {t:"CursusSup (certains concours)", u:"https://www.cursussup.gov.ma/"}
+      ]
+    },
+    ar:{
+      title:"ممرض / ممرضة",
+      study:"معاهد / مدارس الصحة",
+      market:"طلب مرتفع",
+      access:"باك (غالبًا علمي) + مباراة/انتقاء حسب المعهد.",
+      salary:"العمومي ~4500 درهم؛ الخاص مبتدئ ~3500–4000 (تقريبي).",
+      links:[
+        {t:"CursusSup", u:"https://www.cursussup.gov.ma/"}
+      ]
+    }
   },
-  { key:"ux", interest:"design", strengths:["art","lang"], path:["short","long","both"],
-    fr:{ title:"Designer (Graphique / UI-UX)", study:"OFPPT, écoles, formations", market:"Portfolio important" },
-    ar:{ title:"مصمم (غرافيك / UI-UX)", study:"OFPPT، مدارس، تكوينات", market:"الـPortfolio مهم" }
+
+  {
+    key:"ux",
+    interest:"design",
+    strengths:["art","lang"],
+    path:["short","long","both"],
+    fr:{
+      title:"Designer (Graphique / UI-UX)",
+      study:"OFPPT, écoles, formations",
+      market:"Portfolio important",
+      access:"Bac + تكوين + Portfolio قوي (تصاميم/دراسات UX).",
+      salary:"UX/UI ~5 000–14 000 MAD/mois (indicatif).",
+      links:[
+        {t:"OFPPT (officiel)", u:"https://www.ofppt.ma/"}
+      ]
+    },
+    ar:{
+      title:"مصمم (غرافيك / UI-UX)",
+      study:"OFPPT، مدارس، تكوينات",
+      market:"الـPortfolio مهم",
+      access:"باك + تكوين + Portfolio قوي.",
+      salary:"تقريبًا ~5000–14000 درهم/شهر.",
+      links:[
+        {t:"OFPPT", u:"https://www.ofppt.ma/"}
+      ]
+    }
   },
-  { key:"teacher", interest:"education", strengths:["lang"], path:["long","both"],
-    fr:{ title:"Enseignement / Formation", study:"Fac + parcours enseignement", market:"Stable" },
-    ar:{ title:"التعليم / التكوين", study:"الجامعة + مسار التعليم", market:"مستقر" }
+
+  {
+    key:"teacher",
+    interest:"education",
+    strengths:["lang"],
+    path:["long","both"],
+    fr:{
+      title:"Enseignement / Formation",
+      study:"Fac + parcours enseignement / concours",
+      market:"Stable",
+      access:"Licence + concours/formation حسب المسار (public/privé).",
+      salary:"Enseignant ~6 000–19 000 MAD/mois (estimations variables).",
+      links:[
+        {t:"MEN (officiel)", u:"https://www.men.gov.ma/"}
+      ]
+    },
+    ar:{
+      title:"التعليم / التكوين",
+      study:"الجامعة + مسارات التعليم / مباريات",
+      market:"مستقر",
+      access:"إجازة + مباراة/تكوين حسب المسار.",
+      salary:"تقريبًا ~6000–19000 درهم/شهر (كيختلف).",
+      links:[
+        {t:"MEN (رسمي)", u:"https://www.men.gov.ma/"}
+      ]
+    }
   }
 ];
+
 
 function matchScore(interest, strength, pathChoice, item){
   let score = 0;
@@ -359,11 +527,24 @@ results.classList.remove("is-animating");
 void results.offsetWidth; // force le reflow (redémarre l’animation)
 results.classList.add("is-animating");
 
+function linksHTML(list){
+  return (list || []).map(x =>
+    `<li><a href="${x.u}" target="_blank" rel="noopener noreferrer">${x.t}</a></li>`
+  ).join("");
+}
+
 results.innerHTML = ranked.map(({item, score}) => `
   <div class="item">
     <span class="tag">${scoreLabel}: ${score}/6</span>
     <h3>${item[lang].title}</h3>
-    <p><strong>${studyLabel} :</strong> ${item[lang].study}</p>
-    <p><strong>${marketLabel} :</strong> ${item[lang].market}</p>
+
+    <p><strong>${lang==="ar" ? "📚 المسار" : "📚 Parcours"} :</strong> ${item[lang].study}</p>
+    <p><strong>${lang==="ar" ? "✅ شروط الولوج" : "✅ Conditions d’accès"} :</strong> ${item[lang].access}</p>
+    <p><strong>${lang==="ar" ? "💰 راتب تقريبي" : "💰 Salaire estimatif"} :</strong> ${item[lang].salary}</p>
+    <p><strong>${lang==="ar" ? "🔗 روابط رسمية" : "🔗 Liens officiels"} :</strong></p>
+    <ul class="links">${linksHTML(item[lang].links)}</ul>
+
+    <p><strong>${lang==="ar" ? "📈 السوق" : "📈 Marché"} :</strong> ${item[lang].market}</p>
   </div>
 `).join("");
+
