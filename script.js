@@ -310,12 +310,16 @@ form.addEventListener("submit", (e) => {
   const studyLabel = lang === "ar" ? "Études / Parcours" : "Études / Parcours";
   const marketLabel = lang === "ar" ? "Marché" : "Marché";
 
-  results.innerHTML = ranked.map(({item, score}) => `
-    <div class="item">
-      <span class="tag">${scoreLabel}: ${score}/6</span>
-      <h3>${item[lang].title}</h3>
-      <p><strong>${studyLabel} :</strong> ${item[lang].study}</p>
-      <p><strong>${marketLabel} :</strong> ${item[lang].market}</p>
-    </div>
-  `).join("");
-});
+// 🔹 Relancer l’animation des résultats
+results.classList.remove("is-animating");
+void results.offsetWidth; // force le reflow (redémarre l’animation)
+results.classList.add("is-animating");
+
+results.innerHTML = ranked.map(({item, score}) => `
+  <div class="item">
+    <span class="tag">${scoreLabel}: ${score}/6</span>
+    <h3>${item[lang].title}</h3>
+    <p><strong>${studyLabel} :</strong> ${item[lang].study}</p>
+    <p><strong>${marketLabel} :</strong> ${item[lang].market}</p>
+  </div>
+`).join("");
