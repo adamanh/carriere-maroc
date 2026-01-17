@@ -1,3 +1,5 @@
+window.addEventListener("DOMContentLoaded", () => {
+
 // ===== Modal elements
 const infoModal = document.getElementById("infoModal");
 const modalBackdrop = document.getElementById("modalBackdrop");
@@ -740,4 +742,4 @@ results.innerHTML = ranked.map(({item, score}) => `
     <p><strong>${lang==="ar" ? "📈 السوق" : "📈 Marché"} :</strong> ${item[lang].market}</p>
   </div>
 `).join("");
-
+});
