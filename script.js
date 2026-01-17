@@ -1,3 +1,194 @@
+// ===== Modal elements
+const infoModal = document.getElementById("infoModal");
+const modalBackdrop = document.getElementById("modalBackdrop");
+const modalClose = document.getElementById("modalClose");
+const modalOk = document.getElementById("modalOk");
+const modalTitle = document.getElementById("modalTitle");
+const modalBody = document.getElementById("modalBody");
+
+// Selects
+const selInterest = document.getElementById("interest");
+const selStrength = document.getElementById("strength");
+const selPath = document.getElementById("path");
+
+function openModal(title, html){
+  if (!infoModal) return;
+  modalTitle.textContent = title;
+  modalBody.innerHTML = html;
+  infoModal.classList.add("show");
+  infoModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+  if (!infoModal) return;
+  infoModal.classList.remove("show");
+  infoModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (modalOk) modalOk.addEventListener("click", closeModal);
+window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+
+// ===== Infos automatiques
+function infoFor(type, value){
+  // Tu peux enrichir ces textes comme tu veux
+  const tips = {
+    interest: {
+      tech: {
+        title: "Technologie / Informatique",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Commence par des projets simples (site, mini-app) + GitHub.</li>
+            <li>Parcours possibles: <b>OFPPT Dév Digital</b>, <b>BTS/EST</b>, <b>Fac Info</b>, écoles.</li>
+            <li>Compétences utiles: HTML/CSS/JS, bases réseau, logique.</li>
+          </ul>`
+      },
+      business: {
+        title: "Business / Gestion",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Renforce Excel + communication + organisation.</li>
+            <li>Parcours: <b>ENCG</b>, <b>Licence Éco-Gestion</b>, OFPPT/BTS.</li>
+            <li>Débouchés: compta, marketing, RH, vente, audit.</li>
+          </ul>`
+      },
+      health: {
+        title: "Santé",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Très demandé mais exigeant: rigueur + empathie.</li>
+            <li>Parcours: instituts/écoles de santé (selon concours/sélection).</li>
+            <li>Prépare SVT + sciences + motivation.</li>
+          </ul>`
+      },
+      design: {
+        title: "Design / Création",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Le plus important: <b>portfolio</b> (Figma/Photoshop/Illustrator).</li>
+            <li>Parcours: formations, OFPPT, écoles.</li>
+            <li>Spécialités: Graphisme, UI/UX, motion.</li>
+          </ul>`
+      },
+      education: {
+        title: "Éducation",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Travailler la pédagogie + communication.</li>
+            <li>Parcours: Fac + concours/formation selon filière.</li>
+            <li>Bon choix si tu aimes expliquer et encadrer.</li>
+          </ul>`
+      }
+    },
+
+    strength: {
+      math: {
+        title: "Maths / Physique",
+        body: `
+          <span class="pill">Orientation</span>
+          <ul>
+            <li>Bon pour: informatique, data, ingénierie, finance.</li>
+            <li>Travaille: logique, stats, résolution de problèmes.</li>
+          </ul>`
+      },
+      lang: {
+        title: "Langues / Communication",
+        body: `
+          <span class="pill">Orientation</span>
+          <ul>
+            <li>Bon pour: marketing, RH, commerce, enseignement, communication.</li>
+            <li>Travaille: présentation, rédaction, soft skills.</li>
+          </ul>`
+      },
+      bio: {
+        title: "SVT / Biologie",
+        body: `
+          <span class="pill">Orientation</span>
+          <ul>
+            <li>Bon pour: santé, paramédical, biologie, labo.</li>
+            <li>Travaille: sciences + discipline.</li>
+          </ul>`
+      },
+      eco: {
+        title: "Économie",
+        body: `
+          <span class="pill">Orientation</span>
+          <ul>
+            <li>Bon pour: gestion, compta, finance, audit, banque.</li>
+            <li>Travaille: Excel, analyse, lecture de données.</li>
+          </ul>`
+      },
+      art: {
+        title: "Art / Créativité",
+        body: `
+          <span class="pill">Orientation</span>
+          <ul>
+            <li>Bon pour: design graphique, UI/UX, vidéo, création de contenu.</li>
+            <li>Conseil: portfolio + projets réguliers.</li>
+          </ul>`
+      }
+    },
+
+    path: {
+      short: {
+        title: "Études courtes",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Objectif: insertion rapide (OFPPT/BTS/EST).</li>
+            <li>Fais des stages + projets pratiques.</li>
+            <li>Tu peux poursuivre après selon passerelles.</li>
+          </ul>`
+      },
+      long: {
+        title: "Études longues",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Objectif: spécialisation (Licence/Master/Écoles).</li>
+            <li>Travaille le dossier + concours + anglais.</li>
+            <li>Ajoute stages/projets pour être compétitif.</li>
+          </ul>`
+      },
+      both: {
+        title: "Peu importe",
+        body: `
+          <span class="pill">Conseils</span>
+          <ul>
+            <li>Tu peux choisir selon ton budget/temps/objectif.</li>
+            <li>Le plus important: compétences + expérience (stages/projets).</li>
+          </ul>`
+      }
+    }
+  };
+
+  const obj = tips[type]?.[value];
+  if (!obj) return null;
+  return obj;
+}
+
+// Ouvrir automatiquement quand on change une option
+function attachAutoModal(selectEl, type){
+  if (!selectEl) return;
+  selectEl.addEventListener("change", () => {
+    const v = selectEl.value;
+    const data = infoFor(type, v);
+    if (data) openModal(data.title, data.body);
+  });
+}
+
+attachAutoModal(selInterest, "interest");
+attachAutoModal(selStrength, "strength");
+attachAutoModal(selPath, "path");
+
 const form = document.getElementById("careerForm");
 const results = document.getElementById("results");
 
