@@ -131,11 +131,22 @@
   </footer>
 
 </main>
-
-<script src="script.js"></script>
 <!-- Modal infos -->
 <div id="infoModal" class="modal" aria-hidden="true">
-  ...
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modalTitle">Infos</h3>
+      <button id="modalClose" class="modal-close">X</button>
+    </div>
+
+    <div class="modal-body" id="modalBody"></div>
+
+    <div class="modal-footer">
+      <button id="modalOk" class="modal-btn">OK</button>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
